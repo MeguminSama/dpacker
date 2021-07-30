@@ -5,9 +5,9 @@
   "license": "MIT",
   "scripts": {
     "start": "tsc; node ./dist/index.js",
-    "build": "tsc",
-    "dpacker": "node dist/index.js"
+    "build": "tsc"
   },
+  "bin": "./dist/index.js",
   "dependencies": {
     "js-beautify": "^1.14.0",
     "rimraf": "^3.0.2",
