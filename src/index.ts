@@ -40,7 +40,7 @@ for (const inFile of files) {
 
     if (beautifyIt) {
       item.source = jsBeautify(item.source);
-      console.log(`${fileName} | Beautified: ${newFile}}`);
+      console.log(`${fileName} | Beautified: ${newFile}`);
     }
 
     fs.writeFileSync(newFile, item.source);
