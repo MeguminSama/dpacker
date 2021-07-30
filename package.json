@@ -1,13 +1,15 @@
 {
   "name": "dpacker",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "main": "dist/index.js",
   "license": "MIT",
   "scripts": {
     "start": "tsc; node ./dist/index.js",
     "build": "tsc"
   },
-  "bin": "./dist/index.js",
+  "bin": {
+    "dpacker": "./dist/index.js"
+  },
   "dependencies": {
     "js-beautify": "^1.14.0",
     "rimraf": "^3.0.2",
