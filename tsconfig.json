@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "module": "CommonJS",
+    "target": "ESNext",
+    "noImplicitAny": true,
+    "removeComments": true,
+    "preserveConstEnums": true,
+    "strictNullChecks": false,
+    "sourceMap": false,
+    "esModuleInterop": true,
+    "moduleResolution": "Node",
+    "baseUrl": ".",
+    "outDir": "dist",
+    "typeRoots": ["./types", "node_modules/@types"]
+  },
+  "include": ["src/**/*", "types/types.d.ts"]
+}
