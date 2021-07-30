@@ -8,7 +8,7 @@
     "build": "tsc"
   },
   "bin": {
-    "dpacker": "./dist/index.js"
+    "dpacker": "node ./dist/index.js"
   },
   "dependencies": {
     "js-beautify": "^1.14.0",

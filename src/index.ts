@@ -4,11 +4,14 @@ import path from "path";
 import jsBeautify from "js-beautify";
 import unpack from "webpack-unpack";
 
+const currDir = process.cwd();
+const outDir = path.join(currDir, "out");
+
 // delete & remake out dir
-if (fs.existsSync("out")) {
-  rimraf("out");
+if (fs.existsSync(outDir)) {
+  rimraf(outDir);
 }
-fs.mkdirSync("out");
+fs.mkdirSync(outDir);
 
 // must be at least 3 args
 if (process.argv.length < 3)
@@ -32,7 +35,8 @@ for (const inFile of files) {
 
   for (const item of data) {
     const newFileName = genNewFilePath(item.id);
-    const newFile = path.join("out", `${newFileName}.js`);
+    const newFile = path.join(outDir, `${newFileName}.js`);
+    console.log(newFile);
 
     if (beautifyIt) {
       item.source = jsBeautify(item.source);
@@ -45,9 +49,9 @@ for (const inFile of files) {
 }
 
 function genNewFilePath(fileName: string | number, i = 0) {
-  if (!fs.existsSync(path.join("out", `${fileName}.js`))) return fileName;
+  if (!fs.existsSync(path.join(outDir, `${fileName}.js`))) return fileName;
 
-  const p = path.join("out", `${fileName}-${i}.js`);
+  const p = path.join(outDir, `${fileName}-${i}.js`);
 
   if (fs.existsSync(p)) {
     genNewFilePath(fileName, ++i);
