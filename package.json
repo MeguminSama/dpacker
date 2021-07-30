@@ -1,6 +1,6 @@
 {
   "name": "dpacker",
-  "version": "1.0.41",
+  "version": "1.0.5",
   "main": "dist/index.js",
   "license": "MIT",
   "scripts": {
