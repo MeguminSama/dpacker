@@ -16,3 +16,5 @@ npx dpacker ./assets-canary [-b]
 ```
 
 the `-b` is optional, and will auto-beautify the JS files as they're written.
+
+The files will be written into an `out` folder :)
