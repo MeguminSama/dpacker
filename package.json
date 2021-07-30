@@ -5,7 +5,8 @@
   "license": "MIT",
   "scripts": {
     "start": "tsc; node ./dist/index.js",
-    "build": "tsc"
+    "build": "tsc",
+    "dpacker": "node dist/index.js"
   },
   "dependencies": {
     "js-beautify": "^1.14.0",
