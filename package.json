@@ -1,8 +1,12 @@
 {
   "name": "dpacker",
-  "version": "1.0.5",
+  "version": "1.0.51",
   "main": "dist/index.js",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/meguminsama/dpacker"
+  },
   "scripts": {
     "start": "tsc; node ./dist/index.js",
     "build": "tsc"
