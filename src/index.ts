@@ -2,7 +2,7 @@ import fs from "fs";
 import { sync as rimraf } from "rimraf";
 import path from "path";
 import jsBeautify from "js-beautify";
-import unpack from "webpack-unpack";
+import unpack from "./unpack.js";
 
 const currDir = process.cwd();
 const outDir = path.join(currDir, "out");
@@ -19,7 +19,8 @@ if (process.argv.length < 3)
 
 const dirName = process.argv[2];
 
-const beautifyIt = process.argv[3] === "-b";
+const beautifyIt = process.argv[3] === "-b" || process.argv[4] === "-b";
+const allowDuplicates = process.argv[3] === "-d" || process.argv[4] === "-d";
 
 const files = fs.readdirSync(dirName);
 
@@ -35,6 +36,7 @@ for (const inFile of files) {
 
   for (const item of data) {
     const newFileName = genNewFilePath(item.id);
+    if (newFileName === undefined) continue;
     const newFile = path.join(outDir, `${newFileName}.js`);
     console.log(newFile);
 
@@ -50,6 +52,8 @@ for (const inFile of files) {
 
 function genNewFilePath(fileName: string | number, i = 0) {
   if (!fs.existsSync(path.join(outDir, `${fileName}.js`))) return fileName;
+
+  if (!allowDuplicates) return undefined;
 
   const p = path.join(outDir, `${fileName}-${i}.js`);
 
