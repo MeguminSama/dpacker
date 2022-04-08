@@ -1,6 +1,6 @@
 {
   "name": "dpacker",
-  "version": "1.1.1",
+  "version": "1.2.0",
   "main": "dist/index.js",
   "license": "MIT",
   "repository": {
@@ -8,7 +8,7 @@
     "url": "https://github.com/meguminsama/dpacker"
   },
   "scripts": {
-    "start": "tsc; node ./dist/index.js",
+    "start": "tsc && node ./dist/index.js",
     "build": "tsc"
   },
   "bin": {
@@ -18,12 +18,17 @@
     "acorn": "^8.7.0",
     "assert": "^2.0.0",
     "astring": "^1.8.1",
+    "chalk": "^5.0.1",
+    "command-line-args": "^5.2.1",
+    "command-line-usage": "^6.1.2",
     "js-beautify": "^1.14.0",
     "multisplice": "^1.0.0",
     "rimraf": "^3.0.2",
     "scope-analyzer": "^2.1.2"
   },
   "devDependencies": {
+    "@types/command-line-args": "^5.2.0",
+    "@types/command-line-usage": "^5.0.2",
     "@types/estree": "^0.0.51",
     "@types/js-beautify": "^1.13.3",
     "@types/node": "^16.4.7",

@@ -15,6 +15,19 @@ Simply run...
 npx dpacker ./assets-canary [-b] [-d]
 ```
 
+## Parameters
+
+| Flag name         | Shorthand | Default Value | Purpose                                                          |
+| ----------------- | --------- | ------------- | ---------------------------------------------------------------- |
+| --input           | -i        |               | The input directory of .js files                                 |
+| --outDir          | -o        | ./out         | The file to output the separated files                           |
+| --manifest        | -m        | null          | Generate a manifest file at the specified path                   |
+| --verbose         | -v        | false         | Verbose output                                                   |
+| --beautify        | -b        | false         | Beautify the outputted javascript files                          |
+| --allowDuplicates | -d        | false         | Allows duplicate files to be generated when detected             |
+| --force           | -f        | false         | If the output directory already exists, use this to overwrite it |
+| --help            | -h        |               | Show the help menu                                               |
+
 ## Flags:
 
 `-b` is optional, and will auto-beautify the JS files as they're written.
