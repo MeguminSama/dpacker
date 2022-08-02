@@ -15,7 +15,7 @@ const helpInfo: commandLineUsage.Section[] = [
   },
   {
     header: "Example Usage",
-    content: "npx dpacker ./assets -b -v",
+    content: "npx dpacker -i ./assets -b -v",
   },
   {
     header: "Options",
@@ -80,7 +80,7 @@ const helpInfo: commandLineUsage.Section[] = [
 const usageHelp = commandLineUsage(helpInfo);
 
 const argDefinitions: commandLineArgs.OptionDefinition[] = [
-  { name: "input", alias: "i", type: String, defaultOption: false },
+  { name: "input", alias: "i", type: String, defaultOption: true },
   {
     name: "outDir",
     alias: "o",
@@ -112,7 +112,7 @@ if (options.help) {
 }
 
 if (!options.input) {
-  console.error("No input directory specified");
+  console.error("No input directory specified. Try running with `--help` for command usage.");
   process.exit(1);
 }
 
