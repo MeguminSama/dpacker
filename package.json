@@ -15,7 +15,7 @@
     "dpacker": "./dist/index.js"
   },
   "dependencies": {
-    "acorn": "^8.7.0",
+    "acorn": "^8.8.0",
     "assert": "^2.0.0",
     "astring": "^1.8.1",
     "chalk": "^5.0.1",

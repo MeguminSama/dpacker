@@ -12,7 +12,7 @@ module.exports = function unpack(source, opts) {
   var ast =
     typeof source === "object" && typeof source.type === "string"
       ? source
-      : acorn.parse(source, { ecmaVersion: 2019 });
+      : acorn.parse(source, { ecmaVersion: 2021 });
 
   if (opts && opts.source) {
     source = opts.source;
