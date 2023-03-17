@@ -35,3 +35,11 @@ npx dpacker ./assets-canary [-b] [-d]
 `-d` is optional, and will write duplicate files if they share the ID. (By default, it ignores duplicate files as there's usually not any difference)
 
 The files will be written into an `out` folder :)
+
+## Features
+
+Splits large webpack bundle files into their individual modules. Has de-duplication built in, but can be disabled with the `-d` flag.
+
+Converts requires and module.exports to correct form, rather than webpack's (e, t, n) format
+
+`require`s that point to a module ID will be mapped to `require("./moduleId.js")` for IDE compatibility, and should help with recompilation.

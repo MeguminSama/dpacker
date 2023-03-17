@@ -1,6 +1,6 @@
 // webpack-unpack
 // obtained from https://github.com/goto-bus-stop/webpack-unpack
-// modified to allow for arrow functions & "use-strict" declarations
+// modified to allow for arrow functions, "use-strict" declarations, & mapping require(123) to require("./123.js")
 
 var assert = require("assert");
 var acorn = require("acorn");
@@ -193,20 +193,25 @@ function getModuleRange(body) {
 
 function rewriteMagicIdentifiers(moduleWrapper, source, offset) {
   var magicBindings = moduleWrapper.params.map(scan.getBinding);
-  var magicNames = ["module", "exports", "require"];
+  var magicNames = ["module", "exports", "$$dprequire$$"];
   var edit = source ? multisplice(source) : null;
 
   magicBindings.forEach(function (binding, i) {
     var name = magicNames[i];
     binding.getReferences().forEach(function (ref) {
       if (ref === binding.definition) return;
-
       ref.name = name;
       if (edit) edit.splice(ref.start - offset, ref.end - offset, name);
     });
   });
 
-  return edit ? edit.toString() : null;
+  return edit
+    ? edit.toString()
+      // replace $$dprequire$$(id) with require("./id.js")
+      .replace(/\$\$dprequire\$\$\((\d+)\)/g, 'require("./$1.js")')
+      // some requires are in a require.x = "..." format, so just turn these back to require
+      .replace(/\$\$dprequire\$\$/g, "require")
+    : null;
 }
 
 function getDependencies(moduleWrapper) {
