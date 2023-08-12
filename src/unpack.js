@@ -208,7 +208,10 @@ function rewriteMagicIdentifiers(moduleWrapper, source, offset) {
   return edit
     ? edit.toString()
       // replace $$dprequire$$(id) with require("./id.js")
-      .replace(/\$\$dprequire\$\$\((\d+)\)/g, 'require("./$1.js")')
+      .replace(/\$\$dprequire\$\$\(([\de]+)\)/g, (_, id) => {
+        // Sometimes numbers use scientific notation (123e3). We need to convert these to decimal.
+        return `require("./${Number(id)}.js")`
+      })
       // some requires are in a require.x = "..." format, so just turn these back to require
       .replace(/\$\$dprequire\$\$/g, "require")
     : null;
