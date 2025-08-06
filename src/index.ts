@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 import fs from "fs";
 import { sync as rimraf } from "rimraf";
 import path from "path";
